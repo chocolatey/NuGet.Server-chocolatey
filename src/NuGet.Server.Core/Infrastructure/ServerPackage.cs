@@ -61,6 +61,40 @@ namespace NuGet.Server.Core.Infrastructure
             SemVer1IsLatest = false;
             SemVer2IsAbsoluteLatest = false;
             SemVer2IsLatest = false;
+
+            //enhancements
+            ProjectSourceUrl = package.ProjectSourceUrl;
+            PackageSourceUrl = package.PackageSourceUrl;
+            DocsUrl = package.DocsUrl;
+            WikiUrl = package.WikiUrl;
+            MailingListUrl = package.MailingListUrl;
+            BugTrackerUrl = package.BugTrackerUrl;
+            
+
+            Replaces = package.Replaces;
+            Provides = package.Provides;
+            Conflicts = package.Conflicts;
+
+            // server metadata 
+            //todo: need a place to save this local to the package itself
+            IsApproved = package.IsApproved;
+            PackageStatus = package.PackageStatus;
+            PackageSubmittedStatus = package.PackageSubmittedStatus;
+            PackageTestResultStatus = package.PackageTestResultStatus;
+            PackageTestResultStatusDate = package.PackageTestResultStatusDate;
+            PackageValidationResultStatus = package.PackageValidationResultStatus;
+            PackageValidationResultDate = package.PackageValidationResultDate;
+            PackageCleanupResultDate = package.PackageCleanupResultDate;
+            PackageReviewedDate = package.PackageReviewedDate;
+            PackageApprovedDate = package.PackageApprovedDate;
+            PackageReviewer = package.PackageReviewer;
+            IsDownloadCacheAvailable = package.IsDownloadCacheAvailable;
+            DownloadCacheDate = package.DownloadCacheDate;
+            DownloadCache = package.DownloadCache;
+
+            SoftwareDisplayName = package.SoftwareDisplayName;
+            SoftwareDisplayVersion = package.SoftwareDisplayVersion;
+
         }
 
         [JsonRequired]
@@ -96,6 +130,41 @@ namespace NuGet.Server.Core.Infrastructure
         public string Tags { get; set; }
 
         public string Copyright { get; set; }
+
+        #region NuSpec Enhancements
+        public Uri ProjectSourceUrl { get; set; }
+        public Uri PackageSourceUrl { get; set; }
+        public Uri DocsUrl { get; set; }
+        public Uri WikiUrl { get; set; }
+        public Uri MailingListUrl { get; set; }
+        public Uri BugTrackerUrl { get; set; }
+        public IEnumerable<string> Replaces { get; set; }
+        public IEnumerable<string> Provides { get; set; }
+        public IEnumerable<string> Conflicts { get; set; }
+        // round 2
+        public string SoftwareDisplayName { get; set; }
+        public string SoftwareDisplayVersion { get; set; }
+        #endregion
+
+        #region Server Metadata Only
+
+        public bool IsApproved { get; set; }
+        public string PackageStatus { get; set; }
+        public string PackageSubmittedStatus { get; set; }
+        public string PackageTestResultStatus { get; set; }
+        public DateTime? PackageTestResultStatusDate { get; set; }
+        public string PackageValidationResultStatus { get; set; }
+        public DateTime? PackageValidationResultDate { get; set; }
+        public DateTime? PackageCleanupResultDate { get; set; }
+        public DateTime? PackageReviewedDate { get; set; }
+        public DateTime? PackageApprovedDate { get; set; }
+        public string PackageReviewer { get; set; }
+        public bool IsDownloadCacheAvailable { get; set; }
+        public DateTime? DownloadCacheDate { get; set; }
+        public IEnumerable<DownloadCache> DownloadCache { get; set; }
+
+        #endregion
+        
 
         public string Dependencies { get; set; }
 
