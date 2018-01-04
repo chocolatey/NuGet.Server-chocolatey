@@ -7,7 +7,7 @@ using System.Runtime.Versioning;
 
 namespace NuGet.Server.Core.Infrastructure
 {
-    public interface IServerPackage
+    public partial interface IServerPackage
     {
         string Id { get; }
         SemanticVersion Version { get; }

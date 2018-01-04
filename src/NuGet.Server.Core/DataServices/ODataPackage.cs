@@ -66,5 +66,40 @@ namespace NuGet.Server.Core.DataServices
         public string MinClientVersion { get; set; }
 
         public string Language { get; set; }
+
+        #region NuSpec Enhancements
+        public string ProjectSourceUrl { get; set; }
+        public string PackageSourceUrl { get; set; }
+        public string DocsUrl { get; set; }
+        public string WikiUrl { get; set; }
+        public string MailingListUrl { get; set; }
+        public string BugTrackerUrl { get; set; }
+        public string Replaces { get; set; }
+        public string Provides { get; set; }
+        public string Conflicts { get; set; }
+        // round 2
+        public string SoftwareDisplayName { get; set; }
+        public string SoftwareDisplayVersion { get; set; }
+        #endregion
+
+        #region Server Metadata Only
+
+        public bool IsApproved { get; set; }
+        public string PackageStatus { get; set; }
+        public string PackageSubmittedStatus { get; set; }
+        public string PackageTestResultStatus { get; set; }
+        public DateTime? PackageTestResultStatusDate { get; set; }
+        public string PackageValidationResultStatus { get; set; }
+        public DateTime? PackageValidationResultDate { get; set; }
+        public DateTime? PackageCleanupResultDate { get; set; }
+        public DateTime? PackageReviewedDate { get; set; }
+        public DateTime? PackageApprovedDate { get; set; }
+        public string PackageReviewer { get; set; }
+        public bool IsDownloadCacheAvailable { get; set; }
+        public DateTime? DownloadCacheDate { get; set; }
+        public string DownloadCache { get; set; }
+
+        #endregion
+
     }
 }

@@ -85,7 +85,7 @@ namespace NuGet.Server.Core.Tests
                 SemVer2IsAbsoluteLatest = v2AbsLatest,
                 SemVer2IsLatest = v2Latest,
             };
-            var semVerLevel = new SemanticVersion(level, minor: 0, build: 0, specialVersion: null);
+            var semVerLevel = new SemanticVersion(level, minor: 0, build: 0, specialVersion: null, packageReleaseVersion:0);
 
             // Act
             var actual = package.AsODataPackage(new ClientCompatibility(semVerLevel));

@@ -46,8 +46,36 @@ namespace NuGet.Server.Core.DataServices
                 Listed = package.Listed,
                 VersionDownloadCount = package.DownloadCount,
                 MinClientVersion = package.MinClientVersion == null ? null : package.MinClientVersion.ToString(),
-                Language = package.Language
-            };
+                Language = package.Language,
+                // enhancements
+                ProjectSourceUrl = package.ProjectSourceUrl == null ? null : package.ProjectSourceUrl.GetComponents(UriComponents.HttpRequestUrl, UriFormat.Unescaped),
+                PackageSourceUrl = package.PackageSourceUrl == null ? null : package.PackageSourceUrl.GetComponents(UriComponents.HttpRequestUrl, UriFormat.Unescaped),
+                DocsUrl = package.DocsUrl == null ? null : package.DocsUrl.GetComponents(UriComponents.HttpRequestUrl, UriFormat.Unescaped),
+                WikiUrl = package.WikiUrl == null ? null : package.WikiUrl.GetComponents(UriComponents.HttpRequestUrl, UriFormat.Unescaped),
+                MailingListUrl = package.MailingListUrl == null ? null : package.MailingListUrl.GetComponents(UriComponents.HttpRequestUrl, UriFormat.Unescaped),
+                BugTrackerUrl = package.BugTrackerUrl == null ? null : package.BugTrackerUrl.GetComponents(UriComponents.HttpRequestUrl, UriFormat.Unescaped),
+                Replaces = package.Replaces == null ? null : string.Join(",", package.Replaces),
+                Provides = package.Provides == null ? null : string.Join(",", package.Provides),
+                Conflicts = package.Conflicts == null ? null : string.Join(",", package.Conflicts),
+                // server metadata
+                IsApproved = package.IsApproved,
+                PackageStatus = package.PackageStatus,
+                PackageSubmittedStatus = package.PackageSubmittedStatus,
+                PackageTestResultStatus = package.PackageTestResultStatus,
+                PackageTestResultStatusDate = package.PackageTestResultStatusDate,
+                PackageValidationResultStatus = package.PackageValidationResultStatus,
+                PackageValidationResultDate = package.PackageValidationResultDate,
+                PackageCleanupResultDate = package.PackageCleanupResultDate,
+                PackageReviewedDate = package.PackageReviewedDate,
+                PackageApprovedDate = package.PackageApprovedDate,
+                PackageReviewer = package.PackageReviewer,
+                IsDownloadCacheAvailable = package.IsDownloadCacheAvailable,
+                DownloadCacheDate = package.DownloadCacheDate,
+                DownloadCache = package.DownloadCache == null ? null : string.Join("|", package.DownloadCache.Select(ConvertDownloadCacheToStrings)),
+                // enhancements round 2
+                SoftwareDisplayName = package.SoftwareDisplayName,
+                SoftwareDisplayVersion = package.SoftwareDisplayVersion,
+        };
         }
 
         private static IEnumerable<string> ConvertDependencySetToStrings(PackageDependencySet dependencySet)
@@ -86,6 +114,11 @@ namespace NuGet.Server.Core.DataServices
             {
                 return string.Format("{0}:{1}:{2}", packageDependency.Id, packageDependency.VersionSpec, VersionUtility.GetShortFrameworkName(targetFramework));
             }
+        }
+
+        private static string ConvertDownloadCacheToStrings(DownloadCache cache)
+        {
+            return string.Format("{0}^{1}^{2}", cache.OriginalUrl, cache.FileName, cache.Checksum);
         }
     }
 }
