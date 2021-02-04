@@ -4,7 +4,7 @@
         <MonoBuild>true</MonoBuild>
         <DefineConstants>$(DefineConstants);MONO;</DefineConstants>
 	<VisualStudioVersion>11.0</VisualStudioVersion>
-    </PropertyGroup>    
+    </PropertyGroup>
 
     <!-- Common Build Settings and Configurations -->
     <PropertyGroup>
@@ -18,18 +18,17 @@
         <AppDesignerFolder>Properties</AppDesignerFolder>
         <TargetFrameworkProfile />
         <FileAlignment>512</FileAlignment>
-        <TargetFrameworkProfile />
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
         <AdditionalSettingsImport Condition=" $(AdditionalSettingsImport) == '' ">$(NuGetRoot)\Extended.Settings.targets</AdditionalSettingsImport>
     </PropertyGroup>
-    
+
     <PropertyGroup Condition=" $(VisualStudioVersion) == '10.0' ">
         <ShellAssembly>Microsoft.VisualStudio.Shell.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL</ShellAssembly>
         <ShellAssemblyHintPath>..\..\lib\VS10\Microsoft.VisualStudio.Shell.10.0.dll</ShellAssemblyHintPath>
-    
+
         <MSBuildAssembly>Microsoft.Build</MSBuildAssembly>
         <VCProjectEngineAssembly>Microsoft.VisualStudio.VCProjectEngine, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</VCProjectEngineAssembly>
         <VCProjectEngineAssemblyHintPath>..\..\lib\Microsoft.VisualStudio.VCProjectEngine.dll</VCProjectEngineAssemblyHintPath>
@@ -41,7 +40,7 @@
         <VCProjectEngineAssembly>Microsoft.VisualStudio.VCProjectEngine, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</VCProjectEngineAssembly>
     </PropertyGroup>
 
-    <PropertyGroup Condition=" $(VisualStudioVersion) == '12.0' ">        
+    <PropertyGroup Condition=" $(VisualStudioVersion) == '12.0' ">
         <ShellAssembly>Microsoft.VisualStudio.Shell.12.0, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL</ShellAssembly>
         <ShellAssemblyHintPath>..\..\lib\VS12\Microsoft.VisualStudio.Shell.12.0.dll</ShellAssemblyHintPath>
 
@@ -108,7 +107,7 @@
     <PropertyGroup Condition=" '$(Configuration)' == 'Coverage' ">
         <OutputPath>bin\Coverage\</OutputPath>
         <Coverage>true</Coverage>
-        <DefineConstants>$(DefineConstants);CODE_COVERAGE</DefineConstants> 
+        <DefineConstants>$(DefineConstants);CODE_COVERAGE</DefineConstants>
     </PropertyGroup>
 
     <Import Project="$(AdditionalSettingsImport)" Condition="Exists('$(AdditionalSettingsImport)')" />
